@@ -1,0 +1,25 @@
+{
+    "name": "vue",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "api-auto-import": "^0.0.24",
+        "pu-utilsjs": "^0.0.33",
+        "vite": "^5.2.7",
+        "vue": "^3.4.21",
+        "vue-router": "^4.3.0",
+        "vuejs-directive": "^0.0.35"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.4",
+        "less": "^4.2.0",
+        "typescript": "^5.4.3"
+    }
+}
