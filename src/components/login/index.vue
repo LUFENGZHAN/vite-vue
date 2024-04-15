@@ -36,7 +36,7 @@
 </template>
 
 <script lang='ts' setup>
-import { FormInst } from 'naive-ui'
+import { FormInst, FormItemRule } from 'naive-ui'
 const model = ref({
     username: '',
     password: '',
@@ -47,7 +47,7 @@ const rules = {
         required: true,
         message: '账号不能为空',
         trigger: ['input', 'blur'],
-        validator: (rule: { message: string; }, value: string) => {
+        validator: (rule: FormItemRule, value: string) => {
             if (/^[a-z0-9_-]{6,16}$/.test(value)) {
                 return true
             } else if (value !== '') {
@@ -60,7 +60,7 @@ const rules = {
         required: true,
         trigger: ['input', 'blur'],
         message: '密码不能为空',
-        validator: (rule: { message: string; }, value: string) => {
+        validator: (rule: FormItemRule, value: string) => {
             if (/^[a-z0-9_-]{6,18}$/.test(value)) {
                 return true
             } else if (value !== '') {
@@ -110,7 +110,8 @@ const handleLogin = async () => {
         align-items: center;
 
         .login-box {
-            margin: 0 50px;
+            background-color: #bfd4000e;
+            padding: 0 50px;
             flex: 1;
             height: 100%;
 
