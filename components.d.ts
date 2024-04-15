@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     Layout: typeof import('./src/components/Layout/index.vue')['default']
     Login: typeof import('./src/components/login/index.vue')['default']
-    NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
