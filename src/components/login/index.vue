@@ -26,7 +26,8 @@
                         <n-input v-model:value="model.username" @keydown.enter.prevent />
                     </n-form-item>
                     <n-form-item path="password" label="密码">
-                        <n-input v-model:value="model.password" type="password" @keydown.enter.prevent />
+                        <n-input v-model:value="model.password" type="password" show-password-on="mousedown"
+                            @keydown.enter.prevent />
                     </n-form-item>
                 </n-form>
                 <p class="login-btn" @click="handleLogin">登录</p>
