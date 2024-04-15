@@ -28,6 +28,7 @@
 		"api-auto-import": "^0.0.24",
 		"less": "^4.2.0",
 		"path": "^0.12.7",
+		"terser": "^5.30.3",
 		"typescript": "^5.4.3",
 		"unplugin-auto-import": "^0.17.5",
 		"unplugin-vue-components": "^0.26.0",
