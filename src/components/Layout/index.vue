@@ -1,10 +1,11 @@
 <template>
-<div>1
-</div>
+    <div class="layout">
+        123
+    </div>
 </template>
 
 <script lang='ts' setup>
+console.log(123);
 </script>
 
-<style lang='less' scoped>
-</style>
+<style lang='less' scoped></style>

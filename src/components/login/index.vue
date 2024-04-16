@@ -38,6 +38,7 @@
 
 <script lang='ts' setup>
 import { FormInst, FormItemRule } from 'naive-ui'
+const router = useRouter()
 const model = ref({
     username: '',
     password: '',
@@ -75,7 +76,8 @@ const rules = {
 const handleLogin = async () => {
     // 表单校验
     await formRef.value?.validate()
-    console.log(model.value);
+    $store.setToken(model.value.username)
+    router.replace('/')
 }
 
 </script>

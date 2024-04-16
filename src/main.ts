@@ -4,19 +4,23 @@ import App from './App.vue';
 import {createApp} from 'vue';
 // 使用createApp函数创建app
 const app = createApp(App);
+
+// 引入pinia
+import pinia from './pinia';
+// 使用app.use函数引入pinia
+app.use(pinia);
+
+import utils from './utils';
+app.use(utils);
+
+import '@/router/beforeEach';
 import router from './router';
 app.use(router);
+
 // 引入naive-ui
 import naive from 'naive-ui';
 // 使用app.use函数引入naive-ui
 app.use(naive);
-
-// 引入pinia
-import {createPinia} from 'pinia';
-// 使用app.use函数引入pinia
-const pinia = createPinia();
-// 使用app.use函数引入pinia
-app.use(pinia);
 
 import '@/assets/less/index.less';
 

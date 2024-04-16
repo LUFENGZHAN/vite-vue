@@ -1,4 +1,41 @@
+/* 初始化 body 元素 */
 body {
 	margin: 0;
 	padding: 0;
+	font-family: Arial, sans-serif; /* 设置页面默认字体 */
+	font-size: 16px; /* 设置页面默认字体大小 */
+	line-height: 1.5; /* 设置行高，提高可读性 */
+}
+
+/* 初始化链接样式 */
+a {
+	text-decoration: none; /* 移除链接下划线 */
+	color: inherit; /* 继承父元素的文本颜色 */
+	cursor: pointer; /* 鼠标悬停时显示指针 */
+}
+
+/* 初始化列表元素 */
+ul,
+ol {
+	list-style: none; /* 移除列表默认样式 */
+}
+
+/* 其他常见初始化 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0; /* 清除标题默认外边距 */
+}
+
+p {
+	margin: 0; /* 清除段落默认外边距 */
+	padding: 0; /* 清除段落默认内边距 */
+}
+
+img {
+	max-width: 100%; /* 图片自适应父元素宽度 */
+	height: auto; /* 高度自适应，防止图片变形 */
 }
