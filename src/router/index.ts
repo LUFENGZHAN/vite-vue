@@ -1,5 +1,21 @@
 // 导入VueRouter和RouteRecordRaw
 import {RouteRecordRaw, createRouter, createWebHashHistory} from 'vue-router';
+/**
+ * 动态路由
+ */
+export let asyncRoutes: RouteRecordRaw[] = [];
+
+/**
+ * 添加整个文件夹的 modules
+ */
+const modules: Record<string, {default: RouteRecordRaw[]}> = import.meta.glob('./modules/*.ts', {eager: true});
+const _modules = Object.keys(modules).map((v) =>
+	modules[v].default.map((a) => ({
+		...a,
+		nameNumber: parseInt(v.replace('./modules/', '').split('-')[0]),
+	}))
+);
+console.log(_modules);
 
 // 定义默认的路由
 const routesDefault: RouteRecordRaw[] = [
@@ -69,6 +85,7 @@ const router = createRouter({
 // 声明模块vue-router
 declare module 'vue-router' {
 	interface RouteMeta {
+		keepAlive?: boolean; //是否保持 alive 状态
 		title?: string; // 页面标题
 		hidden?: boolean; // 是否隐藏
 		isFullPage?: boolean; // 是否全屏

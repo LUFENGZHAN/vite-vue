@@ -1,31 +1,83 @@
 <template>
     <div class="layout">
-        <n-layout position="absolute">
-            <n-layout-header style="height: 64px; padding: 24px" bordered>
-                颐和园路
-            </n-layout-header>
-            <n-layout has-sider position="absolute" style="top: 64px; bottom: 64px">
-                <n-layout-sider bordered content-style="padding: 24px;">
-                    海淀桥
-                </n-layout-sider>
-                <n-layout content-style="padding: 24px;">
-                    <router-view v-slot="{ Component, route }">
-                        <transition name="fade">
+        <div class="menu">
+            <div class="menu-logo">
+                <p>后台管理</p>
+            </div>
+            <menu-sider></menu-sider>
+        </div>
+        <div class="content">
+            <layout-header />
+            <div class="main">
+                <transition name="fade">
+                    <KeepAlive v-if="route.meta.keepAlive">
+                        <router-view v-slot="{ Component, route }">
                             <component :is="Component" :key="route.path" />
-                        </transition>
+                        </router-view>
+                    </KeepAlive>
+                    <router-view v-else v-slot="{ Component, route }">
+                        <component :is="Component" :key="route.path" />
                     </router-view>
-                </n-layout>
-            </n-layout>
-            <n-layout-footer bordered position="absolute" style="height: 64px; padding: 24px">
-                城府路
-            </n-layout-footer>
-        </n-layout>
+                </transition>
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang='ts' setup>
+import menuSider from './component/menusider.vue';
+import layoutHeader from './component/header.vue';
 const route = useRoute();
 console.log(route);
 </script>
 
-<style lang='less' scoped></style>
+<style lang='less' scoped>
+.layout {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #f0f2f5;
+
+    .menu {
+        width: 200px;
+        height: 100%;
+        background-color: #22282a;
+        float: left;
+
+        .menu-logo {
+            padding: 10px 20px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #333;
+            text-align: center;
+            height: 60px;
+
+            p {
+                font-size: 20px;
+                font-weight: 700;
+                color: #000;
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 200px);
+        height: 100%;
+        float: left;
+    }
+
+    .header {
+        width: 100%;
+        height: 60px;
+        padding: 20px 20px;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+
+    .main {
+        width: calc(100% - 200px);
+        height: 100%;
+    }
+}
+</style>
