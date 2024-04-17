@@ -4,7 +4,7 @@ export default {
 	/**
 	 * 系统是否需要登录
 	 */
-	needLogin: true,
+	needLogin: false,
 	// 免登路由
 	loginRoute: ['login', 'NotFound'],
 	/**

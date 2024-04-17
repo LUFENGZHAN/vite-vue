@@ -38,13 +38,24 @@ const routesDefault: RouteRecordRaw[] = [
 		path: '/',
 		// 路由名称
 		name: 'index',
-		// meta数据，用于存储标题
-		meta: {
-			title: '首页',
-			hiddenInTag: true,
-		},
 		// 组件
 		component: () => import('@/components/Layout/index.vue'),
+		redirect: '/home',
+		children: [
+			{
+				// 路径
+				path: '/home',
+				// 路由名称
+				name: 'home',
+				// meta数据，用于存储标题
+				meta: {
+					title: '首页',
+					hiddenInTag: true,
+				},
+				// 组件
+				component: () => import('@/views/home/index.vue'),
+			},
+		],
 	},
 ];
 
@@ -58,7 +69,7 @@ const router = createRouter({
 // 声明模块vue-router
 declare module 'vue-router' {
 	interface RouteMeta {
-		title: string; // 页面标题
+		title?: string; // 页面标题
 		hidden?: boolean; // 是否隐藏
 		isFullPage?: boolean; // 是否全屏
 		tagTitle?: String; // 标签页标题

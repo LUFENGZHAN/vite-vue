@@ -76,7 +76,7 @@ const rules = {
 const handleLogin = async () => {
     // 表单校验
     await formRef.value?.validate()
-    $store.setToken(model.value.username)
+    $store.settoken.setToken(model.value.username)
     router.replace('/')
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div><input type="button"></input>
+    <div>123456
     </div>
 </template>
 
