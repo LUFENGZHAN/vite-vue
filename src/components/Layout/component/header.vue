@@ -6,12 +6,13 @@
             <n-breadcrumb-item> 平山道支行</n-breadcrumb-item>
         </n-breadcrumb>
         <n-space align="center">
-            <n-avatar round size="small" src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
+            <n-avatar round size="small" :src="avatar" />
         </n-space>
     </div>
 </template>
 
 <script lang='ts' setup>
+import avatar from '@/assets/images/avatar.png'
 </script>
 
 <style lang='less' scoped>
