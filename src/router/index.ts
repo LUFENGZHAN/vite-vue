@@ -56,22 +56,7 @@ const routesDefault: RouteRecordRaw[] = [
 		name: 'index',
 		// 组件
 		component: () => import('@/components/Layout/index.vue'),
-		redirect: '/home',
-		children: [
-			{
-				// 路径
-				path: '/home',
-				// 路由名称
-				name: 'home',
-				// meta数据，用于存储标题
-				meta: {
-					title: '首页',
-					hiddenInTag: true,
-				},
-				// 组件
-				component: () => import('@/views/home/index.vue'),
-			},
-		],
+		children: [],
 	},
 ];
 

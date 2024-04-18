@@ -3,8 +3,44 @@ const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/system',
 		name: 'system',
-		component: () => import('@/views/home/index.vue'),
-		meta: {},
+		redirect: '/system/user',
+		meta: {
+			title: '系统管理',
+		},
+		children: [
+			{
+				path: '/interface',
+				name: 'interface',
+				meta: {
+					title: '接口管理',
+				},
+				component: () => import('@/views/system/interface-management.vue'),
+			},
+			{
+				path: '/menu',
+				name: 'menu',
+				meta: {
+					title: '菜单管理',
+				},
+				component: () => import('@/views/system/menu-management.vue'),
+			},
+			{
+				path: '/role',
+				name: 'role',
+				meta: {
+					title: '角色管理',
+				},
+				component: () => import('@/views/system/role-management.vue'),
+			},
+			{
+				path: '/user',
+				name: 'user',
+				meta: {
+					title: '用户管理',
+				},
+				component: () => import('@/views/system/user-management.vue'),
+			},
+		],
 	},
 ];
 export default routes;

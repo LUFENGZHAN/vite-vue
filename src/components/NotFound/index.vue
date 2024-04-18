@@ -650,9 +650,13 @@ onMounted(() => {
         }, 0)
     }, 1000)
 })
-</script>
+onBeforeUnmount(() => {
+    clearInterval(timer.value)
+    $message.destroyAll()
 
-<style scoped>
+})
+</script>
+<style lang="less" scoped>
 #handboy {
     animation: swing ease-in-out 1.3s infinite alternate;
     transform-origin: 98% 98%;
