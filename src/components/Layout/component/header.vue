@@ -4,7 +4,6 @@
 			<n-breadcrumb-item>北京总行</n-breadcrumb-item>
 			<n-breadcrumb-item> 天津分行</n-breadcrumb-item>
 			<n-breadcrumb-item> 平山道支行</n-breadcrumb-item>
-			<i class="iconfont">&#xe8c9;</i>
 		</n-breadcrumb>
 		<n-space align="center">
 			<n-avatar round size="small" :src="avatar" />

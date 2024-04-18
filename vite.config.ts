@@ -1,16 +1,18 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vuejsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import {NaiveUiResolver} from 'unplugin-vue-components/resolvers';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import apiAuto from 'api-auto-import/vite';
+import UnoCSS from 'unocss/vite';
 import path from 'path';
 export default defineConfig({
 	plugins: [
 		vue(),
 		vuejsx(),
+		UnoCSS(),
 		legacy({
 			targets: ['defaults', 'not IE 11'],
 			additionalLegacyPolyfills: ['regenerator-runtime/runtime'],

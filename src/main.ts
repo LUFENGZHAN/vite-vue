@@ -1,7 +1,7 @@
 // 引入App.vue组件
 import App from './App.vue';
 // 引入createApp函数
-import {createApp} from 'vue';
+import { createApp } from 'vue';
 // 使用createApp函数创建app
 const app = createApp(App);
 
@@ -23,6 +23,6 @@ import naive from 'naive-ui';
 app.use(naive);
 
 import '@/assets/less/index.less';
-
+import 'virtual:uno.css';
 // 挂载app
 app.mount('#app');
