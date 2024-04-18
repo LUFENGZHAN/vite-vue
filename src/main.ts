@@ -4,6 +4,7 @@ import App from './App.vue';
 import { createApp } from 'vue';
 // 使用createApp函数创建app
 const app = createApp(App);
+import '@/assets/less/index.less';
 
 // 引入pinia
 import pinia from './pinia';
@@ -22,7 +23,6 @@ import naive from 'naive-ui';
 // 使用app.use函数引入naive-ui
 app.use(naive);
 
-import '@/assets/less/index.less';
 import 'virtual:uno.css';
 // 挂载app
 app.mount('#app');

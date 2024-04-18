@@ -1,24 +1,70 @@
 <template>
 	<div class="menusider">
-		<n-menu :options="menuOptions" @update:value="handleUpdateValue" />
+		<n-scrollbar>
+			<n-menu v-model:value="selectedKeyRef" :options="menuOptions" @update:value="handleUpdateValue" accordion />
+		</n-scrollbar>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui';
-const menuOptions = ref([
+const selectedKeyRef = ref('');
+const menuOptions: MenuOption[] = [
 	{
-		key: 'divider-1',
-		type: 'divider',
 		label: '1973年的弹珠玩具',
-		props: {
-			style: {
-				marginLeft: '32px',
+		key: 'pinball-1973',
+		children: [
+			{
+				label: '鼠',
+				key: 'rat',
 			},
-		},
+		],
 	},
-]);
-const handleUpdateValue = (key: string, item: MenuOption) => {};
+	{
+		label: '寻羊冒险记',
+		key: 'a-wild-sheep-chase',
+	},
+	{
+		label: '舞，舞，舞',
+		key: 'dance-dance-dance',
+		children: [
+			{
+				label: '饮品',
+				key: 'beverage',
+				children: [
+					{
+						label: '威士忌',
+						key: 'whisky',
+					},
+				],
+			},
+			{
+				label: '食物',
+				key: 'food',
+				children: [
+					{
+						label: '三明治',
+						key: 'sandwich',
+					},
+				],
+			},
+			{
+				label: '过去增多，未来减少',
+				key: 'the-past-increases-the-future-recedes',
+			},
+		],
+	},
+];
+const handleUpdateValue = (key: string, item: MenuOption) => {
+	console.log(key, item);
+};
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.menusider {
+	height: calc(100vh - var(--header-height));
+	:deep(.n-base-icon svg) {
+		color: #fff;
+	}
+}
+</style>

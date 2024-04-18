@@ -5,15 +5,29 @@
 			<n-breadcrumb-item> 天津分行</n-breadcrumb-item>
 			<n-breadcrumb-item> 平山道支行</n-breadcrumb-item>
 		</n-breadcrumb>
-		<n-space align="center">
-			<n-avatar round size="small" :src="avatar" />
-		</n-space>
+
+		<n-popselect :options="options" size="medium" :on-update:value="update">
+			<n-space align="center">
+				<n-avatar round size="small" :src="avatar" />
+				<i class="iconfont color-#4a4b43b0">&#xe676;</i>
+			</n-space>
+		</n-popselect>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import avatar from '@/assets/images/avatar.png';
-const sd = (e: any) => {
+const options = ref([
+	{
+		label: '个人中心',
+		value: '1',
+	},
+	{
+		label: '退出登录',
+		value: '2',
+	},
+]);
+const update = (e: any) => {
 	console.log(e);
 };
 </script>
@@ -26,6 +40,7 @@ const sd = (e: any) => {
 
 	.n-space {
 		cursor: pointer;
+		gap: 3px 5px !important;
 	}
 }
 </style>
