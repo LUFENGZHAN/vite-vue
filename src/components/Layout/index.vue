@@ -30,7 +30,6 @@
 import menuSider from './component/menusider.vue';
 import layoutHeader from './component/header.vue';
 const route = useRoute();
-console.log(route);
 </script>
 
 <style lang="less" scoped>

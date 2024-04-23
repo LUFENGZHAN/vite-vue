@@ -1,5 +1,5 @@
-import {defineStore} from 'pinia';
-import {RouteRecordRaw} from 'vue-router';
+import { defineStore } from 'pinia';
+import { RouteRecordRaw } from 'vue-router';
 export const useRouters = defineStore('setRouter', {
 	state: () => {
 		return {
@@ -13,8 +13,12 @@ export const useRouters = defineStore('setRouter', {
 		},
 	},
 	actions: {
-		setToken(router: RouteRecordRaw[]) {
+		setRoutes(router: RouteRecordRaw[]) {
+			console.log(router);
 			this.routes = router;
+		},
+		setTab(tab: any[]) {
+			this.tab = tab;
 		},
 	},
 });

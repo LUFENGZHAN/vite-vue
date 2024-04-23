@@ -8,6 +8,8 @@
 
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui';
+import useRouters from '@/pinia/modules/set-router';
+const getRouters = useRouters();
 const selectedKeyRef = ref('');
 const menuOptions: MenuOption[] = [
 	{

@@ -1,22 +1,17 @@
 // 导入VueRouter和RouteRecordRaw
-import {RouteRecordRaw, createRouter, createWebHashHistory} from 'vue-router';
-/**
- * 动态路由
- */
-export let asyncRoutes: RouteRecordRaw[] = [];
-
+import { RouteRecordRaw, createRouter, createWebHashHistory } from 'vue-router';
+import { flattenDeep } from 'lodash';
 /**
  * 添加整个文件夹的 modules
  */
-const modules: Record<string, {default: RouteRecordRaw[]}> = import.meta.glob('./modules/*.ts', {eager: true});
-const _modules = Object.keys(modules).map((v) =>
-	modules[v].default.map((a) => ({
+export let asyncRoutes: RouteRecordRaw[] = [];
+const modules: Record<string, { default: RouteRecordRaw[] }> = import.meta.glob('./modules/*.ts', { eager: true });
+export const _modules = Object.keys(modules).map(v =>
+	modules[v].default.map(a => ({
 		...a,
-		nameNumber: parseInt(v.replace('./modules/', '').split('-')[0]),
 	}))
 );
-console.log(_modules);
-
+asyncRoutes = flattenDeep(_modules);
 // 定义默认的路由
 const routesDefault: RouteRecordRaw[] = [
 	{
@@ -48,15 +43,6 @@ const routesDefault: RouteRecordRaw[] = [
 		},
 		// 组件
 		component: () => import('@/components/NotFound/index.vue'),
-	},
-	{
-		// 路径
-		path: '/',
-		// 路由名称
-		name: 'index',
-		// 组件
-		component: () => import('@/components/Layout/index.vue'),
-		children: [],
 	},
 ];
 

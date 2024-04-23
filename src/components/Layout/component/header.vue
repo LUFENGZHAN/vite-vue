@@ -17,18 +17,26 @@
 
 <script lang="ts" setup>
 import avatar from '@/assets/images/avatar.png';
+const router = useRouter();
 const options = ref([
 	{
 		label: '个人中心',
-		value: '1',
+		value: 1,
 	},
 	{
 		label: '退出登录',
-		value: '2',
+		value: 2,
 	},
 ]);
 const update = (e: any) => {
 	console.log(e);
+	switch (e) {
+		case 1:
+			break;
+		case 2:
+			router.replace('/login');
+			break;
+	}
 };
 </script>
 

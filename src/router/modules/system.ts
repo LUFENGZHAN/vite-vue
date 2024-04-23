@@ -1,9 +1,8 @@
-import {RouteRecordRaw} from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/system',
 		name: 'system',
-		redirect: '/system/user',
 		meta: {
 			title: '系统管理',
 		},
