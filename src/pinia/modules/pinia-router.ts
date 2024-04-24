@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
+import type { MenuOption } from 'naive-ui';
+
 export const useRouters = defineStore('setRouter', {
 	state: () => {
 		return {
@@ -12,11 +14,21 @@ export const useRouters = defineStore('setRouter', {
 		routesing(state) {
 			return state.routes.length > 0;
 		},
-        getMenuSiderList(state){
-            return state.routes
-        }
+
 	},
 	actions: {
+        getMenuSiderList(){
+            return this.MenuSiderLists(this.routes)
+        },
+        MenuSiderLists(routes:RouteRecordRaw[]):MenuOption[]{
+            return routes.map((item:RouteRecordRaw)=>{
+                return {
+                    label:item.meta?.title || item.meta?.tagTitle ||item.name,
+                    key:item.path,
+                    children:item.children ? this.MenuSiderLists(item.children) : void 0
+                }
+            })
+        },
 		setRoutes(router: RouteRecordRaw[]) {
 			this.routes = router;
 		},

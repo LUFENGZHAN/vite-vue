@@ -8,25 +8,11 @@
 
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 const router = useRouter()
-console.log($store.piniaRouters.getMenuSiderList,'getMenuSiderList');
 const selectedKeyRef = ref('');
-const menuOptions: MenuOption[] = [
-	{
-		label: '1973年的弹珠玩具',
-		key: 'pinball-1973',
-		children: [
-			{
-				label: '鼠',
-				key: 'rat',
-			},
-		],
-	},
-	{
-		label: '寻羊冒险记',
-		key: 'a-wild-sheep-chase',
-	},
-];
+const menuOptions: MenuOption[] = $store.piniaRouters.getMenuSiderList()
 const handleUpdateValue = (key: string, item: MenuOption) => {
     router.push(key)
 };
