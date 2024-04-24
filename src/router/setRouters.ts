@@ -2,7 +2,7 @@ import router, { asyncRoutes, routesPathMatch } from './index';
 import { RouteRecordSingleViewWithChildren,RouteRecordRaw } from 'vue-router';
 import useRouters from '@/pinia/modules/pinia-router';
 export let state = {
-	state: true,
+	First_login: true,
 };
 export const filterTree = (routes:RouteRecordRaw[]) =>{
     return routes.filter(v => v.meta && !v.meta.hidden ).map(v => {
@@ -53,5 +53,5 @@ export const setRouters = async (is_login = false) => {
 		router.addRoute('index', route);
 	});
 	routesPathMatch.forEach(e => router.addRoute(e));
-	state.state = false;
+	state.First_login = false;
 };

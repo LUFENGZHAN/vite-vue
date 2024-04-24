@@ -15,7 +15,7 @@ router.beforeEach(async (to, from, next) => {
 			    return next({ name: 'login' });   
             }
 		}
-        if (state.state && !is_login) {
+        if (state.First_login && !is_login) {
 			await setRouters(config.remote);
             next({...to, replace: true});
 		}else next();

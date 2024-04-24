@@ -8,6 +8,7 @@ export const useRouters = defineStore('setRouter', {
 			routes: [] as RouteRecordRaw[], // 路由
             flatten: [] as RouteRecordRaw[], // 扁平化路由
 			tab: [] as any[], // 标签
+            breadcrumb:[] as any[]
 		};
 	},
 	getters: {
@@ -20,12 +21,20 @@ export const useRouters = defineStore('setRouter', {
         getMenuSiderList(){
             return this.MenuSiderLists(this.routes)
         },
-        MenuSiderLists(routes:RouteRecordRaw[]):MenuOption[]{
+        setBreadcrumb(breadcrumb:string){
+            this.breadcrumb = breadcrumb.split('/').filter(e=>e)
+        },
+        MenuSiderLists(routes:RouteRecordRaw[],breadcrumb:string|undefined = ''):MenuOption[]{
+            console.log(breadcrumb);
             return routes.map((item:RouteRecordRaw)=>{
+                const label = item.meta?.title || item.meta?.tagTitle || '' as string
+                const newbreadcrumb = breadcrumb ? breadcrumb +'/' + label : label
                 return {
-                    label:item.meta?.title || item.meta?.tagTitle ||item.name,
+                    label,
                     key:item.path,
-                    children:item.children ? this.MenuSiderLists(item.children) : void 0
+                    name:item.name,
+                    breadcrumb:newbreadcrumb,
+                    children:item.children ? this.MenuSiderLists(item.children,newbreadcrumb as string) : void 0
                 }
             })
         },

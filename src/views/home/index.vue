@@ -1,5 +1,6 @@
 <template>
-    <div>123456
+    <div>
+        首页
     </div>
 </template>
 

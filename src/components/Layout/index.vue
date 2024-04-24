@@ -69,7 +69,6 @@ const route = useRoute();
 		display: flex;
 		flex-direction: column;
 		width: calc(100% - var(--menu-width));
-		height: calc(100vh - var(--header-height));
 	}
 
 	.header {
@@ -81,7 +80,21 @@ const route = useRoute();
 	}
 
 	.main {
-		height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: auto;
+        width: 100%;
+		height: calc(100vh - var(--header-height));
+        &::-webkit-scrollbar{
+            width: 8px;
+            height: 8px;
+            background-color: rgba(2, 59, 95, 0.2);
+
+        }
+        &::-webkit-scrollbar-thumb {
+        background-color: #22282a36;
+        border-radius: 5px;
+    }
 	}
 }
 </style>
