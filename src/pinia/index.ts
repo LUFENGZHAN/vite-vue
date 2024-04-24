@@ -1,11 +1,11 @@
 import {App} from 'vue';
-import setRouters from './modules/set-router';
-import settoken from './modules/set-token';
+import piniaRouters from './modules/pinia-router';
+import piniaToken from './modules/pinia-token';
 import {createPinia} from 'pinia';
 const getStore = () => {
 	return {
-		returnRouters: setRouters(),
-		settoken: settoken(),
+		piniaRouters: piniaRouters(),
+		piniaToken: piniaToken(),
 	};
 };
 export default {

@@ -1,14 +1,15 @@
 import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
 	{
-		path: '/system',
+		path: 'system',
 		name: 'system',
 		meta: {
 			title: '系统管理',
 		},
+        redirect: '/system/interface',
 		children: [
 			{
-				path: '/interface',
+				path: 'interface',
 				name: 'interface',
 				meta: {
 					title: '接口管理',
@@ -16,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
 				component: () => import('@/views/system/interface-management.vue'),
 			},
 			{
-				path: '/menu',
+				path: 'menu',
 				name: 'menu',
 				meta: {
 					title: '菜单管理',
@@ -24,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
 				component: () => import('@/views/system/menu-management.vue'),
 			},
 			{
-				path: '/role',
+				path: 'role',
 				name: 'role',
 				meta: {
 					title: '角色管理',
@@ -32,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
 				component: () => import('@/views/system/role-management.vue'),
 			},
 			{
-				path: '/user',
+				path: 'user',
 				name: 'user',
 				meta: {
 					title: '用户管理',

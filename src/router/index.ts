@@ -13,7 +13,7 @@ export const _modules = Object.keys(modules).map(v =>
 );
 asyncRoutes = flattenDeep(_modules);
 // 定义默认的路由
-const routesDefault: RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
 	{
 		// 路径
 		path: '/login',
@@ -29,7 +29,10 @@ const routesDefault: RouteRecordRaw[] = [
 		// 组件
 		component: () => import('@/components/login/index.vue'),
 	},
-	{
+];
+// 合并默认路由和异步路由
+export const routesPathMatch = [
+    {
 		// 路径
 		path: '/:pathMatch(.*)*',
 		// 路由名称
@@ -51,13 +54,13 @@ const router = createRouter({
 	// 创建history实例
 	history: createWebHashHistory(),
 	// 路由配置
-	routes: [...routesDefault],
+	routes,
 });
 // 声明模块vue-router
 declare module 'vue-router' {
 	interface RouteMeta {
 		keepAlive?: boolean; //是否保持 alive 状态
-		title?: string; // 页面标题
+		title: string; // 页面标题
 		hidden?: boolean; // 是否隐藏
 		isFullPage?: boolean; // 是否全屏
 		tagTitle?: String; // 标签页标题

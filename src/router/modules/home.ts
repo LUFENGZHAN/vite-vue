@@ -1,10 +1,12 @@
 import {RouteRecordRaw} from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
 	{
-		path: '/home',
+		path: 'home',
 		name: 'home',
 		component: () => import('@/views/home/index.vue'),
-		meta: {},
+		meta: {
+            title: '首页',
+        },
 	},
 ];
 export default routes;
