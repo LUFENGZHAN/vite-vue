@@ -13,6 +13,7 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'interface',
 				meta: {
 					title: '接口管理',
+                    keepAlive:true
 				},
 				component: () => import('@/views/system/interface-management.vue'),
 			},
@@ -21,6 +22,8 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'menu',
 				meta: {
 					title: '菜单管理',
+                    keepAlive:true
+
 				},
 				component: () => import('@/views/system/menu-management.vue'),
 			},
