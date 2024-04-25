@@ -25,7 +25,6 @@ export const useRouters = defineStore('setRouter', {
             this.breadcrumb = breadcrumb.split('/').filter(e=>e)
         },
         MenuSiderLists(routes:RouteRecordRaw[],breadcrumb:string|undefined = ''):MenuOption[]{
-            console.log(breadcrumb);
             return routes.map((item:RouteRecordRaw)=>{
                 const label = item.meta?.title || item.meta?.tagTitle || '' as string
                 const newbreadcrumb = breadcrumb ? breadcrumb +'/' + label : label

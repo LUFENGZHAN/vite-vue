@@ -10,12 +10,12 @@
 import type { MenuOption } from 'naive-ui';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-const router = useRouter()
+const router = useRouter();
 const selectedKeyRef = ref('');
-const menuOptions: MenuOption[] = $store.piniaRouters.getMenuSiderList()
+const menuOptions: MenuOption[] = $store.piniaRouters.getMenuSiderList();
 const handleUpdateValue = (key: string, item: MenuOption) => {
-    $store.piniaRouters.setBreadcrumb(item.breadcrumb as string)
-    router.push(key)
+	$store.piniaRouters.setBreadcrumb(item.breadcrumb as string);
+	router.push(key);
 };
 </script>
 

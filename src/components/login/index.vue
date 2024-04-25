@@ -76,7 +76,7 @@ const rules = {
 const handleLogin = async () => {
     // 表单校验
     await formRef.value?.validate()
-    $store.settoken.setToken(model.value.username)
+    $store.piniaToken.setToken(model.value.username)
     router.replace('/')
 }
 

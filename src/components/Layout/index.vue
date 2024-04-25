@@ -80,21 +80,20 @@ const route = useRoute();
 	}
 
 	.main {
-        padding: 20px;
-        box-sizing: border-box;
-        overflow: auto;
-        width: 100%;
+		padding: 20px;
+		box-sizing: border-box;
+		overflow: auto;
+		width: 100%;
 		height: calc(100vh - var(--header-height));
-        &::-webkit-scrollbar{
-            width: 8px;
-            height: 8px;
-            background-color: rgba(2, 59, 95, 0.2);
-
-        }
-        &::-webkit-scrollbar-thumb {
-        background-color: #22282a36;
-        border-radius: 5px;
-    }
+		&::-webkit-scrollbar {
+			width: 8px;
+			height: 8px;
+			background-color: #b3b3b333;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: #979d9e36;
+			border-radius: 5px;
+		}
 	}
 }
 </style>
