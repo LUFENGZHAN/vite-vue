@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<n-breadcrumb>
-			<n-breadcrumb-item v-for="(item, i) in store.breadcrumb" :key="i">{{ item }}</n-breadcrumb-item>
+			<n-breadcrumb-item v-for="(item, i) in breadcrumbList" :key="i">{{ item }}</n-breadcrumb-item>
 		</n-breadcrumb>
 
 		<n-popselect :options="options" size="medium" :on-update:value="update">
@@ -18,6 +18,10 @@ import avatar from '@/assets/images/avatar.png';
 import { useRouters } from '@/pinia/modules/pinia-router';
 const router = useRouter();
 const store = useRouters();
+const breadcrumbList = computed(() => {
+    const obj:any = store.flatten.filter(e=>e.path === store.active)[0]
+    return obj.breadcrumb.split('/').filter((e: any)=>e) ?? []
+});
 const options = ref([
 	{
 		label: '个人中心',

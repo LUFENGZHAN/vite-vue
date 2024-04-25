@@ -14,14 +14,17 @@ export const filterTree = (routes:RouteRecordRaw[]) =>{
 }
 export const flatten = (arr: RouteRecordRaw[]) =>{
     let result:RouteRecordRaw[] = [];
-    function flat(arr: RouteRecordRaw[],path?:string) {
-        arr.forEach(e => {
+    function flat(arr: RouteRecordRaw[],path?:string,breadcrumb = '') {
+        arr.forEach((e:any) => {
             e.path = e.path.includes('/') ? e.path : '/' + e.path;
+            const label = e.meta?.title || e.meta?.tagTitle || '' as string
+            const newbreadcrumb = breadcrumb ? breadcrumb +'/' + label : label
             if (path) {
                 e.path = path + e.path;
             }
+            e.breadcrumb = newbreadcrumb;
             if (e.children) {
-                flat(e.children,e.path);
+                flat(e.children,e.path,newbreadcrumb);
             } else {
                 result.push(e);
             }
