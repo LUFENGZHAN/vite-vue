@@ -22,7 +22,7 @@
 				</n-radio-group>
 			</n-form-item>
 			<n-form-item label="注册时间:">
-				<n-time-picker v-model:value="formDate.creation_time" disabled placeholder="选择时间" />
+				<n-date-picker type="datetime" v-model:formatted-value="formDate.creation_time"  placeholder="选择时间" />
 			</n-form-item>
 		</n-form>
 		<common-footer justify="center">
@@ -52,6 +52,7 @@ const handleValidateButtonClick = (e: MouseEvent) => {
 	e.preventDefault();
 	formRef.value?.validate(errors => {
 		if (!errors) {
+            console.log(formDate.value);
 			$message.success('验证成功');
 			$alert.close();
 		}

@@ -81,7 +81,7 @@ const route = useRoute();
 
 	.main {
         position: relative;
-		padding: 20px;
+		padding: 10px;
 		box-sizing: border-box;
 		overflow: auto;
 		width: 100%;

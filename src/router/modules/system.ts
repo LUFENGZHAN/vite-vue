@@ -15,16 +15,6 @@ const routes: Array<RouteRecordRaw> = [
 					title: '接口管理',
 				},
 				component: () => import('@/views/system/interface-management.vue'),
-                children: [
-                    {
-                        path: 'interface',
-                        name: 'interface1',
-                        meta: {
-                            title: '接口管理1',
-                        },
-                        component: () => import('@/views/system/interface-management.vue'),
-                    },
-                ],
 			},
 			{
 				path: 'menu',

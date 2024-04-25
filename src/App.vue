@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { createTheme, inputDark, datePickerDark } from 'naive-ui';
 import { zhCN, dateZhCN } from 'naive-ui';
-const darkTheme = createTheme([inputDark, datePickerDark]);
+const darkTheme = createTheme([inputDark]);
 import 'vfonts/Lato.css';
 import 'vfonts/FiraCode.css';
 const themeOverrides = {

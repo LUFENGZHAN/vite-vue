@@ -1,5 +1,6 @@
-import { DialogOptions, createDiscreteApi } from 'naive-ui';
+import { DialogOptions, createDiscreteApi,NConfigProvider } from 'naive-ui';
 import { h, defineAsyncComponent } from 'vue';
+import { zhCN, dateZhCN } from 'naive-ui';
 import './dialog.less';
 const { dialog } = createDiscreteApi(['dialog']);
 // 弹窗
@@ -39,7 +40,10 @@ class popup {
 			class: 'n-popup',
 			content: () =>
 				typeof options.content === 'object'
-					?h('div', [h(
+					?h(NConfigProvider,{
+                        locale:zhCN,
+                        dateLocale:dateZhCN
+                    }, [h(
                         defineAsyncComponent({
                             loader: () => import('@/components/Layout/component/info.vue'),
                         }),
