@@ -5,6 +5,7 @@ import { setRouters, state } from './setRouters';
 router.beforeEach(async (to, from, next) => {
 	try {
 		if (to.meta?.title) document.title = to.meta.title;
+        $store.piniaRouters.setActive(to.path as string || '');
         const is_login = config.loginRoute.includes(to.name as string || '');
 		if (config.needLogin) {
 			if (!$store.piniaToken.information_auth) {

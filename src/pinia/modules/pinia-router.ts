@@ -8,6 +8,7 @@ export const useRouters = defineStore('setRouter', {
 			routes: [] as RouteRecordRaw[], // 路由
             flatten: [] as RouteRecordRaw[], // 扁平化路由
 			tab: [] as any[], // 标签
+            active:'' as string,
             breadcrumb:[] as any[]
 		};
 	},
@@ -15,9 +16,12 @@ export const useRouters = defineStore('setRouter', {
 		routesing(state) {
 			return state.routes.length > 0;
 		},
-
 	},
 	actions: {
+        setActive(active:string){
+            this.active = active
+            console.log(this.flatten);
+        },
         getMenuSiderList(){
             return this.MenuSiderLists(this.routes)
         },
