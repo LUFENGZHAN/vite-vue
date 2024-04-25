@@ -80,6 +80,7 @@ const route = useRoute();
 	}
 
 	.main {
+        position: relative;
 		padding: 20px;
 		box-sizing: border-box;
 		overflow: auto;

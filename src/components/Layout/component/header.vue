@@ -16,7 +16,6 @@
 <script lang="ts" setup>
 import avatar from '@/assets/images/avatar.png';
 import { useRouters } from '@/pinia/modules/pinia-router';
-import App from '@/App.vue';
 const router = useRouter();
 const store = useRouters();
 const options = ref([
@@ -44,21 +43,7 @@ const openinfo = () => {
 		title: '个人中心',
         maskClosable:false,
 		content: import('@/components/Layout/component/info.vue'),
-        width: '1000px',
-        props:{
-            name:'张三',
-            age:20,
-            sex:'男',
-            phone:'13812345678',
-            email:'12345678@qq.com',
-            company:'xxx公司',
-            department:'xxx部门',
-            position:'xxx职位',
-            introduction:'xxx介绍'
-        },
-        onClose() {
-            console.log('关闭');
-        },
+        width: '600px',
 	})
 };
 </script>

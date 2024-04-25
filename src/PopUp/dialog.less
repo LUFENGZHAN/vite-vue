@@ -1,6 +1,9 @@
 .n-popup {
+    .n-dialog__content{
+        position: initial;
+    }
 	.dialog_content {
-		overflow: auto;
+		overflow-y: auto;
 		&::-webkit-scrollbar {
 			width: 8px;
 			height: 8px;
@@ -11,4 +14,7 @@
 			border-radius: 5px;
 		}
 	}
+    .n-dialog__action{
+        padding: 0 20px 20px 20px;
+    }
 }
