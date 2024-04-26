@@ -6,7 +6,7 @@
 			columns: columns,
 		}"
 	>
-		<template #table_name> 123 </template>
+		
 	</CommonLayout>
 </template>
 
