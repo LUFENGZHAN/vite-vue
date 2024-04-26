@@ -10,8 +10,8 @@ import 'vfonts/Lato.css';
 import 'vfonts/FiraCode.css';
 const themeOverrides = {
 	common: {
-		primaryColor: '#fff',
-		primaryColorHover: '#fff',
+		primaryColor: '#66c923',
+		primaryColorHover: '#1d6',
 		textColorPressed: '#fff',
 	},
 	Button: {
@@ -22,7 +22,7 @@ const themeOverrides = {
 	Select: {
 		peers: {
 			InternalSelection: {
-				textColor: '#FF0000',
+				textColor: '#000',
 			},
 		},
 	},
