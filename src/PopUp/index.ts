@@ -1,4 +1,4 @@
-import { DialogOptions, createDiscreteApi,NConfigProvider } from 'naive-ui';
+import { DialogOptions, createDiscreteApi,NConfigProvider,DialogReactive } from 'naive-ui';
 import { h, defineAsyncComponent } from 'vue';
 import { zhCN, dateZhCN } from 'naive-ui';
 import './dialog.less';
@@ -16,10 +16,10 @@ interface DialogOptionsTpye extends DialogOptions {
 	props?: propsType;
 }
 class popup {
-	private dialogClose: any;
+	private dialogClose: Array<DialogReactive> = [];
 	private maxHeight: number = 650;
 	open(options: DialogOptionsTpye) {
-		this.dialogClose = dialog.create({
+		const dialogApp = dialog.create({
 			showIcon: false,
 			...options,
 			title: options.title ? options.title : '弹窗',
@@ -45,7 +45,7 @@ class popup {
                         dateLocale:dateZhCN
                     }, [h(
                         defineAsyncComponent({
-                            loader: () => import('@/components/Layout/component/info.vue'),
+                            loader: () => options.content,
                         }),
                         {
                             ...options.props,
@@ -57,11 +57,20 @@ class popup {
                   )])
 					: options.content,
 		});
+        this.dialogClose.push(dialogApp);
+		return dialogApp;
 	}
 	close() {
-		dialog.destroyAll()
-		this.dialogClose = null;
+       const dialog = this.dialogClose.pop()
+		setTimeout(() => {
+		    dialog?.destroy()
+		},100)
 	}
+    closeAll() {
+        while (this.dialogClose.length) {
+            this.close()
+        }
+    }
 }
 
 export default new popup();

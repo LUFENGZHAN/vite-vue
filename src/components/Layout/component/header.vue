@@ -19,8 +19,9 @@ import { useRouters } from '@/pinia/modules/pinia-router';
 const router = useRouter();
 const store = useRouters();
 const breadcrumbList = computed(() => {
-    const obj:any = store.flatten.filter(e=>e.path === store.active)[0]
-    return obj.breadcrumb.split('/').filter((e: any)=>e) ?? []
+    const obj:any = store.flatten.find(e=>e.path === store.active)
+    if(!obj) return []
+    return obj.breadcrumb.split('/').filter(Boolean)
 });
 const options = ref([
 	{
