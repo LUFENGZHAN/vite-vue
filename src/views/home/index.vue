@@ -5,17 +5,15 @@
 		:data-table-props="{
 			columns: columns,
 		}"
-		:width="600"
-	></CommonLayout>
+	>
+		<template #table_name> 123 </template>
+	</CommonLayout>
 </template>
 
 <script lang="ts" setup>
 import type { DataTableColumns } from 'naive-ui';
-const params = ref({});
+const params = ref({ page: 1, pageSize: 10 });
 const columns: DataTableColumns = [
-	{
-		type: 'selection',
-	},
 	{
 		title: 'Name',
 		key: 'name',
@@ -30,13 +28,12 @@ const columns: DataTableColumns = [
 	},
 ];
 const apis = (data?: any) => {
-	console.log(data);
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			resolve({
 				code: 200,
 				data: {
-					list: Array.from({ length: 10 }).map((_, index) => ({
+					list: Array.from({ length: 40 }).map((_, index) => ({
 						key: index,
 						name: `Edward King ${index}-${data.page}`,
 						age: 32 + index,
