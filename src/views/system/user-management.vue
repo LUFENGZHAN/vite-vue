@@ -36,30 +36,34 @@ const columns: DataTableColumns = [
 		key: 'controls',
         width:200,
         render(rowData, rowIndex) {
-            return h(NSpace, { }, [
-                h(
-                    NButton,
-                    {
-                        type: 'primary',
-                        size: 'small',
-                        onClick: () => {
-                            console.log(rowData);
-                        },
-                    },
-                    { default: () => '编辑' }
-                ),
-                h(
-                    NButton,
-                    {
-                        size: 'small',
-                        type: 'error',
-                        onClick: () => {
-                            console.log(rowData);
-                        },
-                    },
-                    { default: () => '删除' }
-                ),
-            ]);
+            return h(NSpace, { }, () => [
+				h(
+					NButton,
+					{
+						type: 'primary',
+						size: 'small',
+						onClick: () => {
+							console.log(rowData);
+						},
+					},
+					{
+						default: () => '编辑',
+					}
+				),
+				h(
+					NButton,
+					{
+						type: 'error',
+						size: 'small',
+						onClick: () => {
+							console.log(rowData);
+						},
+					},
+					{
+						default: () => '删除',
+					}
+				),
+			]);
         },
 	},
 ];

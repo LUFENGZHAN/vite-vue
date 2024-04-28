@@ -6,12 +6,12 @@
 			columns: columns,
 		}"
 	>
-		
 	</CommonLayout>
 </template>
 
 <script lang="ts" setup>
 import type { DataTableColumns } from 'naive-ui';
+import { NButton, NSpace } from 'naive-ui';
 const params = ref({ page: 1, pageSize: 10 });
 const columns: DataTableColumns = [
 	{
@@ -25,6 +25,36 @@ const columns: DataTableColumns = [
 	{
 		title: '操作',
 		key: 'controls',
+		render(rowData, rowIndex) {
+			return h(NSpace, {}, () => [
+				h(
+					NButton,
+					{
+						type: 'primary',
+						size: 'small',
+						onClick: () => {
+							console.log(rowData);
+						},
+					},
+					{
+						default: () => '编辑',
+					}
+				),
+				h(
+					NButton,
+					{
+						type: 'error',
+						size: 'small',
+						onClick: () => {
+							console.log(rowData);
+						},
+					},
+					{
+						default: () => '删除',
+					}
+				),
+			]);
+		},
 	},
 ];
 const apis = (data?: any) => {
@@ -33,7 +63,7 @@ const apis = (data?: any) => {
 			resolve({
 				code: 200,
 				data: {
-					list: Array.from({ length: 40 }).map((_, index) => ({
+					list: Array.from({ length: 10 }).map((_, index) => ({
 						key: index,
 						name: `Edward King ${index}-${data.page}`,
 						age: 32 + index,

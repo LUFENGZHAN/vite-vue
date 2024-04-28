@@ -53,6 +53,10 @@ export const setRouters = async (is_login = false) => {
 		if (router.hasRoute(route.name || '')) {
 			router.removeRoute(route.name || '');
 		}
+        if (route.meta?.isFullPage) {
+		    router.addRoute( route);
+            return
+        }
 		router.addRoute('index', route);
 	});
 	routesPathMatch.forEach(e => router.addRoute(e));

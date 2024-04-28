@@ -1,4 +1,4 @@
-import { DialogOptions, createDiscreteApi,NConfigProvider,DialogReactive } from 'naive-ui';
+import { DialogOptions, createDiscreteApi, NConfigProvider, DialogReactive } from 'naive-ui';
 import { h, defineAsyncComponent } from 'vue';
 import { zhCN, dateZhCN } from 'naive-ui';
 import './dialog.less';
@@ -29,9 +29,7 @@ class popup {
 					{
 						class: 'dialog_footer',
 					},
-					[
-						h('div', {}),
-					]
+					() => [h('div', {})]
 				);
 			},
 			style: {
@@ -40,37 +38,43 @@ class popup {
 			class: 'n-popup',
 			content: () =>
 				typeof options.content === 'object'
-					?h(NConfigProvider,{
-                        locale:zhCN,
-                        dateLocale:dateZhCN
-                    }, [h(
-                        defineAsyncComponent({
-                            loader: () => options.content,
-                        }),
-                        {
-                            ...options.props,
-                            style: {
-                                maxHeight: `${options.height && options.height > this.maxHeight ? options.height : this.maxHeight}px`,
-                            },
-                            class: 'dialog_content',
-                        }
-                  )])
+					? h(
+							NConfigProvider,
+							{
+								locale: zhCN,
+								dateLocale: dateZhCN,
+							},
+							() => [
+								h(
+									defineAsyncComponent({
+										loader: () => options.content,
+									}),
+									{
+										...options.props,
+										style: {
+											maxHeight: `${options.height && options.height > this.maxHeight ? options.height : this.maxHeight}px`,
+										},
+										class: 'dialog_content',
+									}
+								),
+							]
+					  )
 					: options.content,
 		});
-        this.dialogClose.push(dialogApp);
+		this.dialogClose.push(dialogApp);
 		return dialogApp;
 	}
 	close() {
-       const dialog = this.dialogClose.pop()
+		const dialog = this.dialogClose.pop();
 		setTimeout(() => {
-		    dialog?.destroy()
-		},100)
+			dialog?.destroy();
+		}, 100);
 	}
-    closeAll() {
-        while (this.dialogClose.length) {
-            this.close()
-        }
-    }
+	closeAll() {
+		while (this.dialogClose.length) {
+			this.close();
+		}
+	}
 }
 
 export default new popup();
