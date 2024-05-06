@@ -46,7 +46,7 @@ const columns: DataTableColumns = [
 						type: 'error',
 						size: 'small',
 						onClick: () => {
-							console.log(rowData);
+							$apis.auth.index.as()
 						},
 					},
 					{

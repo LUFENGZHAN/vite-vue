@@ -5,12 +5,14 @@ import { createApp } from 'vue';
 // 使用createApp函数创建app
 const app = createApp(App);
 import '@/assets/less/index.less';
-
+import '@/request'
 // 引入pinia
 import pinia from './pinia';
 // 使用app.use函数引入pinia
 app.use(pinia);
 
+import api from './api';
+app.use(api);
 import utils from './utils';
 app.use(utils);
 

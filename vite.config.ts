@@ -21,6 +21,7 @@ export default defineConfig({
 		apiAuto({
 			resolveAliasName: '@/api',
 			outFile: 'index',
+            isdefault:false,
 		}),
 		AutoImport({
 			imports: [
