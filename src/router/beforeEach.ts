@@ -10,7 +10,7 @@ router.beforeEach(async (to, from, next) => {
 		if (config.needLogin) {
 			if (!$store.piniaToken.information_auth) {
 				const session = config.sessionStorage ? sessionStorage : localStorage;
-				$store.piniaToken.information_auth = session.getItem('information_auth') || '';
+				$store.piniaToken.information_auth = session.getItem(config.tokenField) || '';
 			}
             if (!$store.piniaToken.information_auth && !is_login) {
 			    return next({ name: 'login' });   

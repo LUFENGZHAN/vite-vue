@@ -40,8 +40,8 @@
 import { FormInst, FormItemRule } from 'naive-ui'
 const router = useRouter()
 const model = ref({
-    username: '',
-    password: '',
+    username: '12321313123213',
+    password: '31232131232',
 })
 const formRef = ref<FormInst | null>(null)
 const rules = {
@@ -76,8 +76,10 @@ const rules = {
 const handleLogin = async () => {
     // 表单校验
     await formRef.value?.validate()
-    $store.piniaToken.setToken(model.value.username)
-    router.replace('/')
+    const data = await $apis.auth.login(model.value)
+    console.log(data,'data');
+    // $store.piniaToken.setToken(model.value.username)
+    // router.replace('/')
 }
 
 </script>

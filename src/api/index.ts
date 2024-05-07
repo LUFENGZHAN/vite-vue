@@ -2,17 +2,15 @@
 // @ts-ignore 
 import {App} from "vue";
 // @ts-ignore
-import auth_index from '@/api/auth/index'
+import auth from '@/api/auth'
 
 
 export const $apiDate = {
-    auth: {
-        index: auth_index
-    }
+    auth: auth
 };
 
 // @ts-ignore
-export const import_auth_index = auth_index
+export const import_auth = auth
 
 declare global {
     const $apis:typeof $apiDate;

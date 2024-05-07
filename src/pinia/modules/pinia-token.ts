@@ -21,9 +21,9 @@ export const useToken = defineStore('token', {
 			const session = config.sessionStorage ? sessionStorage : localStorage;
 			if (!token) {
 				this.information_auth = '';
-				session.removeItem('information_auth');
+				session.removeItem(config.tokenField);
 			}
-			session.setItem('information_auth', token);
+			session.setItem(config.tokenField, token);
 		},
 		setuserInfo(userInfo: any) {
 			this.information = userInfo;
