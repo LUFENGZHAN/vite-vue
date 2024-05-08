@@ -24,7 +24,8 @@ app.use(router);
 import naive from 'naive-ui';
 // 使用app.use函数引入naive-ui
 app.use(naive);
-
+import directive from 'vuejs-directive'
+app.use(directive);
 // 引入自定义组件
 import common from '@/components/common';
 app.use(common);

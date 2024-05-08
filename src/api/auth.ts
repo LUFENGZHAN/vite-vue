@@ -1,6 +1,5 @@
-
 export default {
-    login(data:any){
+    login(data:any){  
         return window.request({
             url:'/auth/login',
             method:'post',

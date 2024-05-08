@@ -8,6 +8,11 @@
 import { zhCN, dateZhCN } from 'naive-ui';
 import 'vfonts/Lato.css';
 import 'vfonts/FiraCode.css';
+import useStore  from '@/pinia/modules/pinia-token';
+const store = useStore()
+watch(() => store.loading, (newVal, oldVal) =>{
+    console.log('newVal', newVal);
+})
 const themeOverrides = {
 	common: {
 		primaryColor: '#66c923',

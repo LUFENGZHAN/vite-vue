@@ -34,6 +34,12 @@ export const useToken = defineStore('token', {
 			}
 			session.setItem('information', userInfo);
 		},
+        setRequests(requests: any){
+            this.requests.push(requests)
+        },
+        removeRequests(){
+            this.requests.pop()
+        }
 	},
 });
 
