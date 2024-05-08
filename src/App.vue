@@ -1,10 +1,10 @@
 <template>
 	<n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="themeOverrides">
 		<div class="app-container">
-			<div class="ball" v-if="store.loading">
-				<div class="ball1"></div>
-				<div class="ball2"></div>
-				<div class="ball3"></div>
+			<div class="loading" v-if="store.loading">
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
 			</div>
 			<router-view />
 		</div>
@@ -41,7 +41,9 @@ const themeOverrides = {
 <style lang="less" scoped>
 .app-container {
 	position: relative;
-	.ball {
+	height: 100%;
+	width: 100%;
+	.loading {
 		position: absolute;
 		z-index: 999;
 		top: 0;
@@ -54,40 +56,29 @@ const themeOverrides = {
 		height: 100vh;
 		text-align: center; /*设置对齐方式*/
 		color: #fff; /*设置文字颜色*/
-		background: rgba(0, 0, 0, 0.5); /*设置背景颜色*/
-		margin: 0px auto;
+		background: rgba(0, 0, 0, 0.3);
+		& > .box {
+			/*设置动画中三个小球的样式*/
+			width: 18px; /*设置大小*/
+			height: 18px;
+			background: #1abc9c;
+			border-radius: 100%;
+			animation: move 1.4s infinite ease-in-out both;
+			&:nth-of-type(1) {
+				/*设置第一个小球的动画延迟*/
+				animation-delay: 0.16s;
+			}
+			&:nth-of-type(2) {
+				/*设置第二个小球的动画延迟*/
+				animation-delay: 0.32s;
+			}
+			&:nth-of-type(3) {
+				/*设置第三个小球的动画延迟*/
+				animation-delay: 0.48s;
+			}
+		}
 	}
-
-	.ball > p {
-		/*设置加载的提示文字的样式*/
-		padding: 20px 0;
-	}
-
-	.ball > div {
-		/*设置动画中三个小球的样式*/
-		width: 18px; /*设置大小*/
-		height: 18px;
-		background: #1abc9c; /*设置背景颜色*/
-		border-radius: 100%; /*设置圆角边框*/
-		display: inline-block; /*设置其显示方式*/
-		animation: move 1.4s infinite ease-in-out both; /*添加动画*/
-	}
-
-	.ball .ball1 {
-		/*设置第一个小球的动画延迟*/
-		animation-delay: 0.16s;
-	}
-
-	.ball .ball2 {
-		/*设置第二个小球的动画延迟*/
-		animation-delay: 0.32s;
-	}
-
-	.ball .ball3 {
-		/*设置第二个小球的动画延迟*/
-		animation-delay: 0.48s;
-	}
-
+	/*设置动画效果*/
 	@keyframes move {
 		/*创建动画*/
 		0% {
