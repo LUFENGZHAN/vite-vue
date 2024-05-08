@@ -3,6 +3,7 @@ export default {
         return window.request({
             url:'/auth/login',
             method:'post',
+            isEncrypt:true,
             data
         })
     }

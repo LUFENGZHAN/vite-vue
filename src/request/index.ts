@@ -1,4 +1,4 @@
-import axios, { isCancel, AxiosError, AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import type { App } from 'vue'
 import requestConfig from '@/config'
 import { encrypt, decrypt,debounce } from 'pu-utilsjs'
@@ -22,18 +22,23 @@ axiosCreate.interceptors.request.use(
 		if ($store.piniaToken.information_auth && config.headers) {
 			config.headers[options.tokenField] = $store.piniaToken.information_auth
 		}
-		if (config.isFormDate && !(config.data instanceof FormData)) {
+		if (config.isFormData && !(config.data instanceof FormData)) {
 			// 处理formdata
-			config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 			const fromDate = new FormData()
 			for (const [key, value] of Object.entries(config.data)) {
 				fromDate.append(key, value as string)
 			}
 			config.data = fromDate
+            config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 		}
 		if (config.isEncrypt && config.data) {
-			const key = encrypt(config.data, options.key)
-			config.data = key
+			const key = encrypt(config.data, options.key).value
+			config.data.p_data = key
+            for (let key in config.data) {
+				if (key !== 'p_data') {
+                    delete config.data[key]
+                }
+			}
 		}
 		return config
 	},
@@ -98,7 +103,7 @@ request.install = (app: App<Element>) => {
 
 declare module 'axios' {
 	interface AxiosRequestConfig {
-		isFormDate?: boolean
+		isFormData?: boolean
 		isEncrypt?: boolean
 	}
 	interface AxiosResponse<T> {

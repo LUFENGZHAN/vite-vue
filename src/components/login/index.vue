@@ -75,10 +75,6 @@ const handleLogin = async () => {
 	// 表单校验
 	await formRef.value?.validate()
 	try {
-		$apis.auth.login(model.value)
-		$apis.auth.login(model.value)
-		$apis.auth.login(model.value)
-		$apis.auth.login(model.value)
 		const data = await $apis.auth.login(model.value)
 
 		console.log(data, 'data')
