@@ -11,9 +11,6 @@ onMounted(() => {
   rendererRef.value.appendChild(renderer)
 })
 
-defineExpose({
-  renderer
-})
 </script>
 
 <style lang='less' scoped>
