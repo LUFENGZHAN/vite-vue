@@ -8,5 +8,14 @@ const routes: Array<RouteRecordRaw> = [
             title: '首页',
         },
 	},
+	{
+		path: 'three',
+		name: 'three',
+		component: () => import('@/views/three/index.vue'),
+		meta: {
+            title: '大屏',
+            isFullPage:true // 是否全屏
+        },
+	},
 ];
 export default routes;
