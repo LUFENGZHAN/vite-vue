@@ -1,26 +1,34 @@
 /*eslint-disable*/
+
 // @ts-ignore 
 import {App} from "vue";
+
 // @ts-ignore
 import auth from '@/api/auth'
 
 
-export const $apiDate = {
+export const $apiData = {
     auth: auth
 };
 
-// @ts-ignore
-export const import_auth = auth
 
 declare global {
-    const $apis:typeof $apiDate;
+    const $apis:typeof $apiData;
+    
     interface Window {
-        $apis : typeof $apiDate;
+        $apis : typeof $apiData;
     }
+    
 }
+
+
+
 export default {
     install(app:App<Element>){
-        app.config.globalProperties.$apis = $apiDate;
-        window.$apis = $apiDate;
+        app.config.globalProperties.$apis = $apiData;
+        
+        window.$apis = $apiData;
+        
     },
 }
+

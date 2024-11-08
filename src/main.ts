@@ -11,8 +11,7 @@ import pinia from './pinia';
 // 使用app.use函数引入pinia
 app.use(pinia);
 
-import api from './api';
-app.use(api);
+
 import utils from './utils';
 app.use(utils);
 
@@ -30,6 +29,9 @@ app.use(directive);
 import common from '@/components/common';
 app.use(common);
 
+import 'element-plus/dist/index.css'
+import ElementPlus from 'element-plus'
 import 'virtual:uno.css';
+app.use(ElementPlus)
 // 挂载app
 app.mount('#app');
