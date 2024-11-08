@@ -75,7 +75,6 @@ window.onresize = () => {
 	width: 90%;
 	height: 100vh;
 	overflow: auto;
-	background-color: #000;
 	margin: auto;
 	&::-webkit-scrollbar {
 		display: none;
