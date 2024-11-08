@@ -42,7 +42,6 @@ const init = () => {
 			div.style.left = `${left}px`;
 			div.style.top = `${top}px`;
 			div.style.position = 'absolute';
-			div.style.transition = 'all 0.3s ease-in-out'; // 添加过渡效果
 			fragment.appendChild(div);
 			col[index] += height + gap;
 			if (i === image.length - 1) {
@@ -72,10 +71,9 @@ window.onresize = () => {
 <style lang="less" scoped>
 .three {
 	position: relative; // 设置父容器为相对定位
-	width: 90%;
 	height: 100vh;
 	overflow: auto;
-	margin: auto;
+	margin: auto 15%;
 	&::-webkit-scrollbar {
 		display: none;
 	}

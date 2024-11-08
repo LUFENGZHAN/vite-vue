@@ -9,9 +9,9 @@ const routes: Array<RouteRecordRaw> = [
         },
 	},
 	{
-		path: 'three',
-		name: 'three',
-		component: () => import('@/views/three/index.vue'),
+		path: 'waterfall-flow',
+		name: 'waterfall-flow',
+		component: () => import('@/views/waterfall-flow/index.vue'),
 		meta: {
             title: '大屏',
             isFullPage:true // 是否全屏
