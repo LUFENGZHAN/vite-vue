@@ -2,11 +2,13 @@
 	"name": "vue",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "electron/main.js",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview"
+		"electron": "nodemon --exec electron . --watch ./ --ext .js,.html,.css,.vue",
+		"electron:dev": "npm-run-all --parallel dev electron",
+		"build:exe": " electron-builder",
+		"electron:build": "vite build && electron-builder"
 	},
 	"keywords": [],
 	"author": "",
@@ -31,7 +33,11 @@
 		"@vitejs/plugin-vue": "^5.0.4",
 		"@vitejs/plugin-vue-jsx": "^3.1.0",
 		"api-auto-import": "^0.0.43",
+		"electron": "^33.2.0",
+		"electron-builder": "^25.1.8",
 		"less": "^4.2.0",
+		"nodemon": "^3.1.7",
+		"npm-run-all": "^4.1.5",
 		"path": "^0.12.7",
 		"terser": "^5.30.3",
 		"typescript": "^5.4.3",
@@ -39,5 +45,36 @@
 		"unplugin-auto-import": "^0.17.5",
 		"unplugin-vue-components": "^0.26.0",
 		"vfonts": "^0.0.3"
+	},
+	"build": {
+		"productName": "现场采集系统",
+		"appId": "electron-vue",
+		"asar": true,
+		"directories": {
+			"output": "buileder"
+		},
+		"files": [
+			"dist",
+			"electron"
+		],
+		"nsis": {
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": true
+		},
+		"mac": {
+			"category": "your.app.category.type"
+		},
+		"win": {
+			"icon": "./electron/log.ico",
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"ia32"
+					]
+				}
+			]
+		},
+		"linux": {}
 	}
 }

@@ -17,6 +17,11 @@ import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
 import useStore from '@/pinia/modules/pinia-token'
 const store = useStore()
+if (navigator.onLine) {
+  console.log('网络连接正常');
+} else {
+  console.log('当前处于离线状态');
+}
 const themeOverrides = {
 	common: {
 		primaryColor: '#66c923',

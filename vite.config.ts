@@ -21,7 +21,7 @@ export default defineConfig({
 		apiAuto({
 			resolveAliasName: '@/api',
 			outFile: 'index',
-            isdefault:false,
+			isdefault: false,
 		}),
 		AutoImport({
 			imports: [
@@ -37,10 +37,14 @@ export default defineConfig({
 			resolvers: [NaiveUiResolver()],
 		}),
 	],
+    base: './', 
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, 'src'),
 		},
+	},
+	optimizeDeps: {
+		exclude: ['electron'],
 	},
 	server: {
 		host: true,
