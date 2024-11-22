@@ -9,18 +9,16 @@
 		<div class="content">
 			<layout-header />
 			<div class="main">
-				<KeepAlive v-if="route.meta.keepAlive">
-					<router-view v-slot="{ Component, route }">
-						<transition name="fade">
+				<transition name="bounce">
+					<KeepAlive v-if="route.meta.keepAlive">
+						<router-view v-slot="{ Component, route }">
 							<component :is="Component" :key="route.path" />
-						</transition>
-					</router-view>
-				</KeepAlive>
-				<router-view v-else v-slot="{ Component, route }">
-					<transition name="fade">
+						</router-view>
+					</KeepAlive>
+					<router-view v-else v-slot="{ Component, route }">
 						<component :is="Component" :key="route.path" />
-					</transition>
-				</router-view>
+					</router-view>
+				</transition>
 			</div>
 		</div>
 	</div>
@@ -80,7 +78,7 @@ const route = useRoute();
 	}
 
 	.main {
-        position: relative;
+		position: relative;
 		padding: 10px;
 		box-sizing: border-box;
 		overflow: auto;
@@ -97,13 +95,18 @@ const route = useRoute();
 		}
 	}
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.1s ease;
+.bounce-enter-active {
+	animation: bounce-in 0.3s;
 }
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.bounce-leave-active {
+	animation: bounce-in 0.3s;
+}
+@keyframes bounce-in {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 </style>
