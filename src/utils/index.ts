@@ -2,6 +2,9 @@ import {App} from 'vue';
 import {createDiscreteApi} from 'naive-ui';
 import utils from './common';
 import popup from '@/PopUp';
+import {useToken} from '@/pinia/modules/pinia-token';
+import { Store } from 'pinia'
+
 const {message, dialog} = createDiscreteApi(['message', 'dialog']);
 declare global {
 	const $message: typeof message;
@@ -16,6 +19,8 @@ declare global {
         $alert: typeof popup;
 	}
 }
+
+
 export default {
 	install(app: App<Element>) {
 		// 定义全局方法

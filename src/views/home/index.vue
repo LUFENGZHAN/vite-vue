@@ -1,4 +1,5 @@
 <template>
+    {{ $store.piniaToken.loading }}
 	<CommonLayout
 		:api-date="apis"
 		:params="params"
@@ -46,7 +47,7 @@ const columns: DataTableColumns = [
 						type: 'error',
 						size: 'small',
 						onClick: () => {
-							$apis.auth.index.as()
+							
 						},
 					},
 					{

@@ -1,8 +1,15 @@
 import {defineStore} from 'pinia';
 import {RouteRecordRaw} from 'vue-router';
 import config from '@/config';
+
+interface useTokenType {
+	information: any; // 用户信息
+	information_auth: string; // 用户token
+	routes: RouteRecordRaw[]; // 用户权限
+	requests: any[]; // 请求列表
+}
 export const useToken = defineStore('token', {
-	state: () => {
+	state: ():useTokenType => {
 		return {
 			information: {}, // 用户信息
 			information_auth: '', // 用户token
