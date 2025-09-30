@@ -66,6 +66,7 @@ declare module 'vue-router' {
 		tagTitle?: String; // 标签页标题
 		hiddenInTag?: boolean; // 是否在标签页中隐藏
 		requiresAuth?: boolean; // 是否需要登录
+        permissions?: string[]; // 当前路由所需权限
 	}
 }
 // 导出router实例

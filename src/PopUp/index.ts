@@ -33,7 +33,7 @@ class popup {
 				);
 			},
 			style: {
-				width: options.width ? options.width : 'auto',
+				width: options.width ? options.width : '800px',
 			},
 			class: 'n-popup',
 			content: () =>

@@ -1,5 +1,4 @@
 <template>
-    {{ $store.piniaToken.loading }}
 	<CommonLayout
 		:api-date="apis"
 		:params="params"

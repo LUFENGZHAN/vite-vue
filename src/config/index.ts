@@ -4,7 +4,7 @@ export default {
 	/**
 	 * 系统是否需要登录
 	 */
-	needLogin: false,
+	needLogin: true,
     /**
      * token缓存名称
      */

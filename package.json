@@ -5,6 +5,7 @@
 	"main": "electron/main.js",
 	"scripts": {
 		"dev": "vite",
+		"build": "vite build",
 		"electron": "nodemon --exec electron . --watch ./ --ext .js,.html,.css,.vue",
 		"electron:dev": "npm-run-all --parallel dev electron",
 		"build:exe": " electron-builder",

@@ -18,6 +18,8 @@ app.use(utils);
 import '@/router/beforeEach';
 import router from './router';
 app.use(router);
+import api from './api';
+app.use(api);
 
 // 引入naive-ui
 import naive from 'naive-ui';

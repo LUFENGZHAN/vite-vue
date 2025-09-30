@@ -13,35 +13,40 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'interface',
 				meta: {
 					title: '接口管理',
-                    keepAlive:true
+                    keepAlive:true,
+                    permissions:['add','edit','delete']
 				},
-				component: () => import('@/views/system/interface-management.vue'),
+				component: () => import('@/views/system/interface/index.vue'),
 			},
 			{
 				path: 'menu',
 				name: 'menu',
 				meta: {
 					title: '菜单管理',
-                    keepAlive:true
+                    keepAlive:true,
+                    permissions:['add','edit','delete']
 
 				},
-				component: () => import('@/views/system/menu-management.vue'),
+				component: () => import('@/views/system/menus/index.vue'),
 			},
 			{
 				path: 'role',
 				name: 'role',
 				meta: {
 					title: '角色管理',
+                    permissions:['add','edit','delete']
+
 				},
-				component: () => import('@/views/system/role-management.vue'),
+				component: () => import('@/views/system/roles/index.vue'),
 			},
 			{
 				path: 'user',
 				name: 'user',
 				meta: {
 					title: '用户管理',
+                    permissions:['add','edit','delete']
 				},
-				component: () => import('@/views/system/user-management.vue'),
+				component: () => import('@/views/system/users/index.vue'),
 			},
 		],
 	},
