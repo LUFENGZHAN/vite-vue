@@ -64,24 +64,9 @@ const columns: DataTableColumns = [
         },
     },
 ];
-const apis = (data?: any) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({
-                code: 200,
-                data: {
-                    list: Array.from({ length: 40 }).map((_, index) => ({
-                        key: index,
-                        name: `Edward King ${index}-${data.page}`,
-                        age: 32 + index,
-                    })),
-                    page: data.page,
-                    pageSize: data.pageSize,
-                    total: 40,
-                },
-            });
-        }, 1000);
-    });
+const apis = async(data?: any) => {
+    // const res = await $apis.auth.loginlist(data)
+    return null
 };
 
 const add = (row?: any) => {

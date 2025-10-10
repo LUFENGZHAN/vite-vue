@@ -39,6 +39,7 @@ const update = (e: any) => {
 			openinfo();
 			break;
 		case 2:
+            $apis.auth.logout();
 			router.replace('/login');
 			break;
 	}

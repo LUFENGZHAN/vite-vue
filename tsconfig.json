@@ -1,14 +1,26 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"baseUrl": "./",
-		"paths": {
-			"@/*": ["./src/*"]
-		},
-		"moduleResolution": "Node",
-		"resolveJsonModule": true,
-		"strict": true
-	},
-	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "auto-imports.d.ts", "components.d.ts", "auto-api.ts"]
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "baseUrl": "./",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "strict": true
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "auto-imports.d.ts",
+        "components.d.ts",
+        "auto-api.ts"
+    ]
 }

@@ -10,8 +10,8 @@
                 <h1>登录</h1>
                 <n-form ref="formRef" :model="model" label-placement="left" label-width="auto"
                     require-mark-placement="right" :rules="rules">
-                    <n-form-item path="username" label="账号">
-                        <n-input v-model:value="model.username" @keydown.enter.prevent placeholder="请输入账号" />
+                    <n-form-item path="account" label="账号">
+                        <n-input v-model:value="model.account" @keydown.enter.prevent placeholder="请输入账号" />
                     </n-form-item>
                     <n-form-item path="password" label="密码">
                         <n-input v-model:value="model.password" type="password" show-password-on="mousedown"
@@ -28,12 +28,12 @@
 import { FormInst, FormItemRule } from 'naive-ui'
 const router = useRouter()
 const model = ref({
-    username: '12321313123213',
-    password: '31232131232',
+    account: 'admin1',
+    password: 'xiaozhan123456@6',
 })
 const formRef = ref<FormInst | null>(null)
 const rules = {
-    username: {
+    account: {
         required: true,
         message: '账号不能为空',
         trigger: ['input', 'blur'],
@@ -51,7 +51,7 @@ const rules = {
         trigger: ['input', 'blur'],
         message: '密码不能为空',
         validator: (rule: FormItemRule, value: string) => {
-            if (/^[a-z0-9_-]{6,18}$/.test(value)) {
+            if (/^[a-z0-9_-]{6,18}/.test(value)) {
                 return true
             } else if (value !== '') {
                 rule.message = '账号格式由字母数字-_组成,长度为6-18位'
@@ -61,17 +61,14 @@ const rules = {
     },
 }
 
-console.log($apis);
 const handleLogin = async () => {
     // 表单校验
     await formRef.value?.validate()
     try {
-        
-        const data = await $apis.auth.login(model.value)
-    } catch (error) {
 
-        $store.piniaToken.setToken(model.value.username)
+        const data = await $apis.auth.login(model.value)
         router.replace('/')
+    } catch (error) {
     }
 }
 </script>

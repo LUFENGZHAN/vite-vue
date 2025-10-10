@@ -8,7 +8,7 @@ export default {
     /**
      * token缓存名称
      */
-    tokenField: 'information_auth',
+    tokenField: 'session_id',
 	// 免登路由
 	loginRoute: ['login', 'NotFound'],
 	/**

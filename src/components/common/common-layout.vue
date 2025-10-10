@@ -89,7 +89,7 @@ const initDate = async () => {
 	pagination.pageSize = data.data[props.dataField] ? data.data.pageSize : (data.data.length as any);
 	if (!data.data[props.dataField]) pagination.pageSizes.push(data.data.length as any);
 	pagination.page = data.data[props.dataField] ? data.data.page : 1;
-	pagination.itemCount = data.data[props.dataField] ? data.data.total : (data.data.length as any);
+	pagination.itemCount = data.data[props.dataField] ? data.data.total ||data.data[props.dataField].length  : (data.data.length as any);
 };
 
 // 暴露方法
