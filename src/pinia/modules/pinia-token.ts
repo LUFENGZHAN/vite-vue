@@ -42,7 +42,6 @@ export const useToken = defineStore('token', {
             } catch (error) {
                 this.setToken('');
                 this.userInfo = null;
-                throw error
             }
 
         },
