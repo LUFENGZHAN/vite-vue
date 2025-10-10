@@ -65,8 +65,7 @@ const handleLogin = async () => {
     // 表单校验
     await formRef.value?.validate()
     try {
-
-        const data = await $apis.auth.login(model.value)
+        await $apis.auth.login(model.value)
         router.replace('/')
     } catch (error) {
     }
