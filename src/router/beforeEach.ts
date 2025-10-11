@@ -8,7 +8,7 @@ router.beforeEach(async (to, from, next) => {
         $store.piniaRouters.setActive(to.path as string || '');
         const is_login = config.loginRoute.includes(to.name as string || '');
 
-        if (config.needLogin && !is_login) {
+        if (config.needLogin && !$store.piniaToken.userInfo && !is_login) {
             await $store.piniaToken.getInformation();
             if (!$store.piniaToken.information_auth) {
                 return next({ name: 'login' });

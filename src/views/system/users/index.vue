@@ -1,8 +1,11 @@
 <template>
-    <CommonLayout :api-date="apis" :params="params" :data-table-props="{
+    <CommonLayout :api-date="apis"  :search-props="{
+        addText: '新增用户',
+        placeholder: '请输入用户名称11',
+    }" :data-table-props="{
         columns: columns,
-        
     }" @add="add()">
+<template #table-sex>111</template>
     </CommonLayout>
 </template>
 
@@ -65,8 +68,8 @@ const columns: DataTableColumns = [
     },
 ];
 const apis = async(data?: any) => {
-    // const res = await $apis.auth.loginlist(data)
-    return null
+    // const res = await $apis.auth(data)
+    // return res
 };
 
 const add = (row?: any) => {

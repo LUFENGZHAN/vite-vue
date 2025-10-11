@@ -101,7 +101,13 @@ request.install = (app: App<Element>) => {
 
 declare module 'axios' {
     interface AxiosRequestConfig {
+        /**
+         * 是否显示loading
+         */
         isFormData?: boolean
+        /**
+         * 是否加密传输
+         */
         isEncrypt?: boolean
     }
     interface AxiosResponse<T> {

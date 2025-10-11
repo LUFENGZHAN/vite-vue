@@ -20,5 +20,10 @@ export default {
             method: 'post',
         })
     },
-
+    heartbeat() {
+        return window.request({
+            url: '/online/heartbeat',
+            method: 'post',
+        }, false)
+    },
 }

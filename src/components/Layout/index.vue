@@ -11,7 +11,7 @@
             <div class="main">
                 <router-view v-slot="{ Component, route }">
                     <transition name="bounce" mode="out-in">
-                        <component  :is="Component" :key="route.fullPath" />
+                        <component :is="Component" :key="route.fullPath" />
                     </transition>
                 </router-view>
             </div>
@@ -22,6 +22,23 @@
 <script lang="ts" setup>
 import menuSider from './component/menusider.vue';
 import layoutHeader from './component/header.vue';
+let heartbeatTimer: any = null;
+onMounted(() => {
+    // 避免重复创建多个定时器
+    if (heartbeatTimer) clearInterval(heartbeatTimer);
+
+    heartbeatTimer = setInterval(async () => {
+        try {
+            await $apis.auth.heartbeat();
+        } catch (err) {
+            console.warn('Heartbeat failed:', err);
+        }
+    }, 30000); // 每 30 秒发一次心跳
+});
+
+onBeforeUnmount(() => {
+    if (heartbeatTimer) clearInterval(heartbeatTimer);
+});
 
 </script>
 
@@ -93,16 +110,20 @@ import layoutHeader from './component/header.vue';
     }
 }
 
-.bounce-enter-active, .bounce-leave-active {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.bounce-enter-from, .bounce-leave-to {
-  transform: scale(0.95);
-  opacity: 0;
-}
-.bounce-enter-to, .bounce-leave-from {
-  transform: scale(1);
-  opacity: 1;
+.bounce-enter-active,
+.bounce-leave-active {
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+.bounce-enter-from,
+.bounce-leave-to {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+.bounce-enter-to,
+.bounce-leave-from {
+    transform: scale(1);
+    opacity: 1;
+}
 </style>

@@ -3,7 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 import config from '@/config';
 import api from '@/api/auth';
 interface useTokenType {
-    userInfo: any; // 用户信息
+    userInfo: any | null; // 用户信息
     information_auth: string; // 用户token
     routes: RouteRecordRaw[]; // 用户权限
     requests: any[]; // 请求列表
