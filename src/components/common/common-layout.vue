@@ -108,7 +108,7 @@ const add = () => {
 };
 const initDate = async () => {
     if (props.dataTableProps?.data && props.dataTableProps?.data.length > 0) return;
-    const data: dataType = props.apiDate && (await props.apiDate({ ...props.params, ...apiParams.value }));
+    const data: dataType = props.apiData && (await props.apiData({ ...props.params, ...apiParams.value }));
     if (typeof data === 'function' || !data) return;
     const resp = data.data || {};
     const list = resp[props.dataField] || resp.list || (Array.isArray(resp) ? resp : []);
@@ -130,7 +130,7 @@ onBeforeMount(async () => {
 
 interface propsType {
     height?: number;
-    apiDate?: (data: any) => Promise<any>;
+    apiData?: (data: any) => Promise<any>;
     dataTableProps: DataTableProps;
     searchConfig?: searchConfig;
     dataField?: string;
